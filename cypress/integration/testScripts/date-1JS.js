@@ -1,4 +1,5 @@
 const  userData  = require ('../../fixtures/user.json')
+const editJsonFile = require("edit-json-file");
 
         const currentDate = new Date();
 
@@ -32,12 +33,19 @@ const  userData  = require ('../../fixtures/user.json')
         // console.log('writing to ' + fileName);
         // });
         
-        let content = JSON.parse(fs.readFileSync('C:\\Manju\\cypressworkspace\\LearnCypress\\cypress\\fixtures\\user.json', 'utf8'));
-        // edit or add property
-        content='output/cucumber-json/'.concat(dateString.concat(timetring))
-        //write file
-        fs.writeFileSync('C:\\Manju\\cypressworkspace\\LearnCypress\\cypress\\fixtures\\user.json', JSON.stringify(content))
+        // let content = JSON.parse(fs.readFileSync('C:\\Manju\\cypressworkspace\\LearnCypress\\cypress\\fixtures\\user.json', 'utf8'));
+        // // edit or add property
+   
+        // content='output/cucumber-json/'.concat(dateString.concat(timetring))
+        // //write file
+        // fs.writeFileSync('C:\\Manju\\cypressworkspace\\LearnCypress\\cypress\\fixtures\\user.json', JSON.stringify(content))
         
+        let file = editJsonFile(`cypress/fixtures/user.json`)
+        file.set('cypress-cucumber-preprocessor.cucumberJson.outputFolder', 'output/cucumber-json/'.concat(dateString.concat(timetring)))
+        file.save();
 
-        
-
+        // Reload it from the disk
+        file = editJsonFile(`cypress/fixtures/user.json`, {
+        autosave: true
+        });
+     

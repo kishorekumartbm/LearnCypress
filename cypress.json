@@ -1,8 +1,6 @@
 {   
-    "baseUrl":"http://localhost:3000",
+   
     "watchForFileChanges":true,
-    "viewportHeight":1000,
-    "viewportWidth":600,
     "env":{
         "no1":10,
         "no2":20,
